@@ -8,6 +8,16 @@
 </head>
 <body>
 
+
+        <script>
+        try {
+            if (localStorage.getItem('annabium-theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+        } catch (e) {}
+    </script>
+
+
     <!-- شريط التنقل العلوي -->
     <header>
     <!-- قسم الشعار -->
@@ -84,8 +94,8 @@
         <!-- حاوية صور الواجهة للتبديل التلقائي بين الوضع المضيء والمظلم -->
 
             <div class="hero-logo-container">
-        <img src="images/Interface_white_mode.png" alt="Interface Light Mode" class="hero-logo logo-light-img">
-        <img src="images/Interface_dark_mode.png" alt="Interface Dark Mode" class="hero-logo logo-dark-img">
+        <img src="images/logo-light.png" alt="Interface Light Mode" class="hero-logo logo-light-img">
+        <img src="images/logo-dark.png" alt="Interface Dark Mode" class="hero-logo logo-dark-img">
                 </div>
         
         <p class="hero-subtitle" 
@@ -103,50 +113,67 @@
 
     <!-- قسم من نحن -->
     
-<section id="about">
-  <!-- عنوان تقني أنيق موحد -->
-  <div class="tech-header-wrapper">
-   <!-- <div class="about-bg-container">
-        <img src="images/about_us_dark_mode.jpg" alt="About Us Light Background" class="bg-img light-bg">
-        <img src="images/about_us_dark_mode.jpg" alt="About Us Dark Background" class="bg-img dark-bg">
-    </div>-->
-    <h2
-      class="tech-title"
-      data-en="About Us"
-      data-fr="À propos de nous"
-      data-ar="من نحن"
-    >
-      من نحن
-    </h2>
-  </div>
 
-  <!-- النص داخل إطار تقني أنيق (.feasibility-box) -->
-  <div class="feasibility-box extended-box">
-  <div class="about-grid">
-    <!-- قسم النص الحلي مع احتفاظه الكامل بكافة البيانات والترجمات -->
-    <div class="about-text-content">
-      <p
-        class="about-text"
-        data-en="ANNABIUM INDUSTRIES is an emerging Algerian engineering and technology venture focused on power electronics, industrial power solutions, and advanced electrical engineering. Our journey begins with the development of Switched-Mode Power Supplies (SMPS), with the ambition of transforming engineering prototypes into reliable, manufacturable, and commercially competitive industrial products. Building on our prototype development progress, we aim to establish a robust product platform designed to meet the practical requirements of automation systems, industrial control equipment, and other applications requiring dependable DC power. We believe that industrial capability is built through engineering discipline, continuous testing, manufacturing expertise, and a deep understanding of market needs. Our long-term ambition extends beyond individual products: we aim to contribute to Algeria’s industrial development by building local technological capabilities, developing engineering talent, and creating a foundation for international expansion."
-        data-fr="ANNABIUM INDUSTRIES est une entreprise algérienne émergente spécialisée dans l’ingénierie et les technologies, axée sur l’électronique de puissance, les solutions d’alimentation électrique industrielles et l’ingénierie électrique avancée. Notre aventure débute par le développement d’alimentations à découpage (Switched-Mode Power Supplies – SMPS), avec l’ambition de transformer des prototypes d’ingénierie en produits industriels fiables, industrialisables et compétitifs sur le marché. Forts des progrès réalisés dans le développement de nos prototypes, nous ambitionnons de mettre en place une plateforme de produits robuste, conçue pour répondre aux exigences pratiques des systèmes d’automatisation, des équipements de commande industrielle et d’autres applications nécessitant une alimentation continue fiable. Nous sommes convaincus que la capacité industrielle repose sur la rigueur de l’ingénierie, les essais continus, le savoir-faire en fabrication et une compréhension approfondie des besoins du marché. Notre ambition à long terme dépasse le développement de produits individuels : nous souhaitons contribuer au développement industriel de l’Algérie en renforçant les capacités technologiques locales, en développant les compétences en ingénierie et en créant les bases d’une expansion à l’international."
-        data-ar="ANNABIUM INDUSTRIES هي مؤسسة جزائرية ناشئة في مجال الهندسة والتكنولوجيا، تركز على إلكترونيات القدرة، وحلول التغذية الكهربائية الصناعية، والهندسة الكهربائية المتقدمة. تنطلق رحلتنا من تطوير مزودات الطاقة ذات نمط التبديل (Switched-Mode Power Supplies – SMPS)، بطموح يتمثل في تحويل النماذج الأولية الهندسية إلى منتجات صناعية موثوقة، قابلة للتصنيع على نطاق صناعي، وقادرة على المنافسة تجاريًا. واستنادًا إلى التقدم الذي أحرزناه في تطوير نماذجنا الأولية، نسعى إلى إنشاء منصة منتجات متينة ومتكاملة، مصممة لتلبية المتطلبات العملية لأنظمة الأتمتة، ومعدات التحكم الصناعي، وغيرها من التطبيقات التي تتطلب تغذية موثوقة بالتيار المستمر (DC). نؤمن بأن بناء القدرات الصناعية يرتكز على الانضباط الهندسي، والاختبارات المستمرة، والخبرة في التصنيع، والفهم العميق لاحتياجات السوق. يتجاوز طموحنا على المدى الطويل تطوير منتجات منفردة؛ إذ نسعى إلى المساهمة في التنمية الصناعية للجزائر من خلال تعزيز القدرات التكنولوجية المحلية، وتنمية الكفاءات الهندسية، وإرساء قاعدة متينة للتوسع في الأسواق الدولية."
-      >
-        <strong>ANNABIUM INDUSTRIES</strong> تُعد ANNABIUM INDUSTRIES مؤسسة جزائرية ناشئة في مجال الهندسة والتكنولوجيا، تركز على إلكترونيات القدرة، وحلول التغذية الكهربائية الصناعية، والهندسة الكهربائية المتقدمة.<br><br>
-        تنطلق رحلتنا من تطوير مزوّدات الطاقة ذات نمط التبديل (SMPS)، بطموح يتمثل في تحويل النماذج الأولية الهندسية إلى منتجات صناعية موثوقة، وقابلة للتصنيع على نطاق صناعي، وقادرة على المنافسة تجاريًا.<br><br>
-        واستنادًا إلى التقدم الذي أحرزناه في تطوير نماذجنا الأولية، نسعى إلى إنشاء منصة متكاملة ومتينة من المنتجات، مصممة لتلبية المتطلبات العملية لأنظمة الأتمتة، ومعدات التحكم الصناعي، وغيرها من التطبيقات التي تتطلب تغذية كهربائية موثوقة بالتيار المستمر (DC).<br><br>
-        نؤمن بأن بناء القدرات الصناعية يرتكز على الانضباط الهندسي، والاختبارات المستمرة، والخبرة في التصنيع، والفهم العميق لاحتياجات السوق.<br><br>
-        يتجاوز طموحنا على المدى الطويل تطوير منتجات منفردة؛ إذ نسعى إلى المساهمة في التنمية الصناعية للجزائر من خلال تعزيز القدرات التكنولوجية المحلية، وتنمية الكفاءات الهندسية، وإرساء قاعدة متينة للتوسع في الأسواق الدولية.
-      </p>
+<!-- ============================================================ -->
+<!-- ABOUT US SECTION — قسم من نحن                                -->
+<!-- ============================================================ -->
+<!--
+    إعدادات هذا القسم:
+    1. الخلفية الفاتحة والخلفية الداكنة تُضبطان في style.css.
+    2. لا تغيّر id="about" لأنه مرتبط برابط التنقل.
+    3. لا تضف قسمًا ثانيًا يحمل id="about".
+-->
+
+<section id="about" class="animated-section sec-about">
+
+    <!-- ======================================================== -->
+    <!-- 1. SECTION TITLE — عنوان القسم                           -->
+    <!-- ======================================================== -->
+    <h2
+        class="tech-title"
+        data-en="About Us"
+        data-fr="À propos de nous"
+        data-ar="من نحن"
+    >
+        من نحن
+    </h2>
+
+    <!-- ======================================================== -->
+    <!-- 2. TEXT CARD — بطاقة النص (floats on the background)     -->
+    <!--    "about-content" = glass effect, see style.css 16.6    -->
+    <!-- ======================================================== -->
+    <div class="feasibility-box extended-box about-content">
+
+        <div class="about-grid">
+
+            <div class="about-text-content">
+
+                <!-- 3. MULTILINGUAL TEXT — النصوص متعددة اللغات -->
+                <p
+                    class="about-text"
+                    data-html
+
+                    data-en="<strong>ANNABIUM ELECTRONICS</strong> is an emerging Algerian engineering and technology venture focused on power electronics, industrial power solutions, and advanced electrical engineering.<br><br>Our journey begins with the development of Switched-Mode Power Supplies (SMPS), with the ambition of transforming engineering prototypes into reliable, manufacturable, and commercially competitive industrial products.<br><br>Building on our prototype development progress, we aim to establish a robust product platform designed to meet the practical requirements of automation systems, industrial control equipment, and other applications requiring dependable DC power.<br><br>We believe that industrial capability is built through engineering discipline, continuous testing, manufacturing expertise, and a deep understanding of market needs.<br><br>Our long-term ambition extends beyond individual products: we aim to contribute to Algeria’s industrial development by building local technological capabilities, developing engineering talent, and creating a foundation for international expansion."
+
+                    data-fr="<strong>ANNABIUM ELECTRONICS</strong> est une entreprise algérienne émergente spécialisée dans l’ingénierie et les technologies, axée sur l’électronique de puissance, les solutions d’alimentation électrique industrielles et l’ingénierie électrique avancée.<br><br>Notre aventure débute par le développement d’alimentations à découpage (Switched-Mode Power Supplies – SMPS), avec l’ambition de transformer des prototypes d’ingénierie en produits industriels fiables, industrialisables et compétitifs sur le marché.<br><br>Forts des progrès réalisés dans le développement de nos prototypes, nous ambitionnons de mettre en place une plateforme de produits robuste, conçue pour répondre aux exigences pratiques des systèmes d’automatisation, des équipements de commande industrielle et d’autres applications nécessitant une alimentation continue fiable.<br><br>Nous sommes convaincus que la capacité industrielle repose sur la rigueur de l’ingénierie, les essais continus, le savoir-faire en fabrication et une compréhension approfondie des besoins du marché.<br><br>Notre ambition à long terme dépasse le développement de produits individuels : nous souhaitons contribuer au développement industriel de l’Algérie en renforçant les capacités technologiques locales, en développant les compétences en ingénierie et en créant les bases d’une expansion à l’international."
+
+                    data-ar="تُعد <strong>ANNABIUM ELECTRONICS</strong> مؤسسة جزائرية ناشئة في مجال الهندسة والتكنولوجيا، تركز على إلكترونيات القدرة، وحلول التغذية الكهربائية الصناعية، والهندسة الكهربائية المتقدمة.<br><br>تنطلق رحلتنا من تطوير مزوّدات الطاقة ذات نمط التبديل (SMPS)، بطموح يتمثل في تحويل النماذج الأولية الهندسية إلى منتجات صناعية موثوقة، وقابلة للتصنيع على نطاق صناعي، وقادرة على المنافسة تجاريًا.<br><br>واستنادًا إلى التقدم الذي أحرزناه في تطوير نماذجنا الأولية، نسعى إلى إنشاء منصة متكاملة ومتينة من المنتجات، مصممة لتلبية المتطلبات العملية لأنظمة الأتمتة، ومعدات التحكم الصناعي، وغيرها من التطبيقات التي تتطلب تغذية كهربائية موثوقة بالتيار المستمر (DC).<br><br>نؤمن بأن بناء القدرات الصناعية يرتكز على الانضباط الهندسي، والاختبارات المستمرة، والخبرة في التصنيع، والفهم العميق لاحتياجات السوق.<br><br>يتجاوز طموحنا على المدى الطويل تطوير منتجات منفردة؛ إذ نسعى إلى المساهمة في التنمية الصناعية للجزائر من خلال تعزيز القدرات التكنولوجية المحلية، وتنمية الكفاءات الهندسية، وإرساء قاعدة متينة للتوسع في الأسواق الدولية."
+                >
+                    تُعد <strong>ANNABIUM ELECTRONICS</strong> مؤسسة جزائرية ناشئة في مجال الهندسة والتكنولوجيا، تركز على إلكترونيات القدرة، وحلول التغذية الكهربائية الصناعية، والهندسة الكهربائية المتقدمة.<br><br>تنطلق رحلتنا من تطوير مزوّدات الطاقة ذات نمط التبديل (SMPS)، بطموح يتمثل في تحويل النماذج الأولية الهندسية إلى منتجات صناعية موثوقة، وقابلة للتصنيع على نطاق صناعي، وقادرة على المنافسة تجاريًا.<br><br>واستنادًا إلى التقدم الذي أحرزناه في تطوير نماذجنا الأولية، نسعى إلى إنشاء منصة متكاملة ومتينة من المنتجات، مصممة لتلبية المتطلبات العملية لأنظمة الأتمتة، ومعدات التحكم الصناعي، وغيرها من التطبيقات التي تتطلب تغذية كهربائية موثوقة بالتيار المستمر (DC).<br><br>نؤمن بأن بناء القدرات الصناعية يرتكز على الانضباط الهندسي، والاختبارات المستمرة، والخبرة في التصنيع، والفهم العميق لاحتياجات السوق.<br><br>يتجاوز طموحنا على المدى الطويل تطوير منتجات منفردة؛ إذ نسعى إلى المساهمة في التنمية الصناعية للجزائر من خلال تعزيز القدرات التكنولوجية المحلية، وتنمية الكفاءات الهندسية، وإرساء قاعدة متينة للتوسع في الأسواق الدولية.
+                </p>
+
+            </div>
+            <!-- END MULTILINGUAL TEXT -->
+
+        </div>
     </div>
 
-    <!-- إضافة حاوية الصور التفاعلية الخاصة بـ Light Mode و Dark Mode -->
-    
-  </div>
-</div>
 </section>
+<!-- ================= END ABOUT US SECTION ==================== -->
+
     <!-- قسم خدماتنا -->
     <!-- قسم الخدمات -->
-<section id="services">
+<section id="services" class="animated-section sec-services">
             <div class="tech-header-wrapper">
                  <h2 class="tech-title" 
                     data-en="Our Services" 
@@ -276,7 +303,7 @@
 </section>
     <!-- قسم المميزات -->
     <!-- قسم المميزات (Features) -->
-<section id="features">
+<section id="features" class="animated-section sec-features">
     <div class="tech-header-wrapper">
         <h2 class="tech-title" 
             data-en="Our Advantages" 
@@ -370,7 +397,7 @@ simulation-assisted development to improve future product generations."
 </section>
             <!-- قسم الرؤية (Our Vision) -->
 <!-- قسم الرؤية (Our Vision) -->
-<section id="vision">
+<section id="vision" class="animated-section sec-vision">
     <div class="tech-header-wrapper">
         <h2 class="tech-title" 
             data-en="Our Vision" 
@@ -468,7 +495,7 @@ simulation-assisted development to improve future product generations."
     </div>
 </section>
 <!-- قسم الجدوى التقنية وخارطة الطريق -->
-<section id="roadmap">
+<section id="roadmap" class="animated-section sec-roadmap">
     <!-- عنوان تقني احترافي كبير -->
 <div class="tech-header-wrapper">
     <h2 class="tech-title" 
@@ -533,6 +560,7 @@ simulation-assisted development to improve future product generations."
     </div>
 </section>
 
+
     <!-- معرض الصور -->
     <!--<section id="gallery">
         <h2 data-en="Gallery" data-fr="Galerie" data-ar="معرض الصور">معرض الصور</h2>
@@ -544,18 +572,54 @@ simulation-assisted development to improve future product generations."
     </section>
 -->
     <!-- التواصل -->
-    <section id="contact">
-        <h2 data-en="Contact Us" data-fr="Contactez-nous" data-ar="تواصل معنا">تواصل معنا</h2>
-        <p data-en="For inquiries, reach out via our official email:" data-fr="Pour toute question, contactez-nous par e-mail:" data-ar="لأي استفسارات أو طلبات، يمكنك مراسلتنا عبر البريد الإلكتروني:">لأي استفسارات أو طلبات، يمكنك مراسلتنا عبر البريد الإلكتروني:</p>
-        <p class="gmail-address">📧 <strong>annabium.industries@gmail.com
-</strong></p>
-    </section>
+    <section id="contact" class="animated-section sec-contact">
+    <div class="tech-header-wrapper">
+        <h2 class="tech-title" data-en="Contact Us" data-fr="Contactez-nous" data-ar="تواصل معنا">
+            تواصل معنا
+        </h2>
+    </div>
 
+    <!-- صندوق المحتوى الأنيق (نفس ستايل قسم من نحن) -->
+    <div class="feasibility-box contact-box-content" style="max-width: 700px; text-align: center;">
+        <p class="contact-desc" 
+           data-en="For inquiries or industrial collaborations, reach out to us directly:" 
+           data-fr="Pour toute question ou collaboration industrielle, contactez-nous directement :" 
+           data-ar="لأي استفسارات أو شراكات صناعية، يسعدنا تواصلكم معنا مباشرة عبر البريد الإلكتروني:">
+            لأي استفسارات أو شراكات صناعية، يسعدنا تواصلكم معنا مباشرة عبر البريد الإلكتروني:
+        </p>
+
+        <!-- زر البريد الإلكتروني الجديد مع شعار Gmail الحقيقي الملون -->
+        <div style="margin: 25px 0; display: flex; justify-content: center;">
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=annabium.electronics@gmail.com" target="_blank" class="btn contact-gmail-btn">
+    <!-- أيقونة مغلف البريد الاحترافية SVG -->
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+        <rect width="20" height="16" x="2" y="4" rx="2"/>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+    </svg>
+    <span>annabium.electronics@gmail.com</span>
+</a>
+</div>
+
+        <p style="font-size: 0.950rem; opacity: 0.85; margin-top: 15px;"
+   data-en="📍 Location: Annaba, Algeria — Industrial-grade technical support"
+   data-fr="📍 Lieu : Annaba, Algérie — Support technique de niveau industriel"
+   data-ar="📍 الموقع: عنابة، الجزائر — دعم تقني بمستوى صناعي">
+    📍 الموقع: عنابة، الجزائر — دعم تقني بمستوى صناعي
+</p>
+    </div>
+</section>
     <!-- التذييل -->
     <footer>
-        <p data-en="All Rights Reserved © 2026 Annabium Industries" data-fr="Tous droits réservés © 2026 Annabium Industries" data-ar="جميع الحقوق محفوظة © 2026 Annabium Industries">جميع الحقوق محفوظة © 2026 Annabium Industries</p>
-    </footer>
+    <p data-html
+       data-en="All Rights Reserved © 2026 Annabium Electronics"
+       data-fr="Tous droits réservés © 2026 Annabium Electronics"
+       data-ar="جميع الحقوق محفوظة © 2026 <bdi dir='ltr'>Annabium Electronics</bdi>">
+       جميع الحقوق محفوظة © 2026 <bdi dir="ltr">Annabium Electronics</bdi>
+    </p>
+</footer>
 
+
+     <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

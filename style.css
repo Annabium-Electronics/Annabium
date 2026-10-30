@@ -1,15 +1,75 @@
+/* ================================================================
+   ANNABIUM INDUSTRIES — MAIN STYLESHEET (FIXED + COMMENTED)
+
+   QUICK GUIDE — WHERE TO CHANGE THINGS
+   ----------------------------------------------------------------
+   * Colors (light / dark) ............ Section 01  (:root / body.dark-mode)
+   * ALL background images ............ Section 01  (--xxx-background variables)
+   * Header height / fade sizes ....... Section 01  (:root variables)
+   * Header logo size ................. Section 01  (--header-logo-height)
+   * Hero logo size ................... Section 01  (--hero-logo-height / width / scale)
+   * Hero (first screen) .............. Sections 07, 08, 09
+   * Animated sections (About, etc.) .. Section 16
+   * Hero -> About smooth blend ....... Section 07 (hero bottom) + 16.2/16.3 (About top)
+   * Mobile layout .................... Section 18
+
+   IMAGE FILES:
+   Several url() values separated by commas are STACKED as layers (they
+   are NOT fallbacks). Listing several extensions of the SAME file name
+   is fine (only one exists). Never mix DIFFERENT file names in one
+   variable, or the top one will hide the others.
+
+   IMPORTANT:
+   Keep the HTML section IDs (#hero, #about, #services ...) unchanged
+   unless you also update the matching CSS selectors.
+   ================================================================ */
+
+
+/* ================================================================
+   01. THEME COLORS, IMAGE VARIABLES AND SIZE SETTINGS
+   ================================================================ */
+
+/* ---------- LIGHT THEME (default) ---------- */
 :root {
-    --bg-primary: #f8f9fa;
-    --bg-secondary: #ffffff;
-    --text-color: #212529;
-    --accent-color: #0d6efd;
-    --card-bg: #ffffff;
-    --border-color: #e0e0e0;
+    /* Colors */
+    --bg-primary: #e2e8f0;      /* خلفية الصفحة: رمادي هادئ وغير ساطع */
+    --bg-secondary: #edf2f7;    /* خلفية الهيدر والعناصر الثانوية */
+    --text-color: #0f172a;      /* لون النصوص لضمان أقصى درجات الوضوح */
+    --accent-color: #0284c7;    /* لون التميز والأزرار */
+    --card-bg: #f1f5f9;         /* خلفية البطاقات بلون أوف-وايت مطفأ (بدون أي بياض ناصع) */
+    --border-color: #94a3b8;    /* حدود واضحة ومتناسقة */
     --footer-bg: #1e293b;
     --footer-text: #ffffff;
+
+    /* ----- SIZE SETTINGS (change here) ----- */
+    --header-height: 65px;          /* Height of the top header            */
+    --header-logo-height: 220px;    /* Logo in the header (tuned: the logo file has transparent padding) */
+    --header-logo-max-width: 180px; /* Logo in the header: max width       */
+    --hero-logo-height: 220px;      /* Big logo in the hero card: box height */
+    --hero-logo-width: 420px;       /* Big logo in the hero card: box width  */
+    --hero-logo-scale: 1.3;         /* Big logo zoom (same for light + dark) */
+    --hero-fade-height: 280px;      /* Fade at the bottom of the hero (BLEND: keep close to --anim-fade-top) */
+    --anim-fade-top: 280px;         /* Fade at the TOP of animated sections (BLEND: keep close to --hero-fade-height) */
+    --anim-fade-bottom: 180px;      /* Fade at the BOTTOM of animated sections (height) */
+    --anim-bleed: -1.5%;            /* Extra image size so edges never show while moving */
+    --anim-scale: 1.00;             /* Zoom of the moving background       */
+    --about-card-opacity: 62%;      /* Transparency of the About text card (lower = more see-through) */
+    --about-card-blur: 8px;         /* Blur behind the About text card     */
+
+    /* ----- BACKGROUND IMAGES — LIGHT MODE (change file names here) ----- */
+    --hero-background:      url("images/aboutus-light.jpg"), url("images/aboutus-light.png"), url("images/back-ground-light01.jpeg"), url("images/back-ground-light01.webp");
+    --hero-card-background: url("images/about_us_light_mode.jpg"), url("images/about_us_light_mode.png"), url("images/about_us_light_mode.jpeg"), url("images/about_us_light_mode.webp");
+    --about-background:     url("images/aboutus.jpg");
+    --services-background: url("images/about_us_light_mode.png"), url("images/about_us_light_mode.jpg");
+    --features-background:  url("images/features-light.png"), url("images/features-light.jpg"), url("images/features-light.webp");
+    --vision-background:    url("images/vision-light.png"), url("images/vision-light.jpg"), url("images/vision-light.webp");
+    --roadmap-background:   url("images/roadmap-light.png"), url("images/roadmap-light.jpg"), url("images/roadmap-light.webp");
+    --contact-background:   url("images/contact-light.png"), url("images/contact-light.jpg"), url("images/contact-light.webp");
 }
 
+/* ---------- DARK THEME (overrides the light values) ---------- */
 body.dark-mode {
+    /* Colors */
     --bg-primary: #0f172a;
     --bg-secondary: #1e293b;
     --text-color: #f8fafc;
@@ -18,18 +78,49 @@ body.dark-mode {
     --border-color: #334155;
     --footer-bg: #020617;
     --footer-text: #cbd5e1;
+
+    /* ----- BACKGROUND IMAGES — DARK MODE (change file names here) ----- */
+    --hero-background:      url("images/aboutus-dark.jpg"), url("images/aboutus-dark.png"), url("images/back-ground-dark01.jpeg"), url("images/back-ground-dark01.webp");
+    --hero-card-background: url("images/about_us_dark_mode.jpg"), url("images/about_us_dark_mode.png"), url("images/about_us_dark_mode.jpeg"), url("images/about_us_dark_mode.webp");
+    --about-background:     url("images/aboutus.jpg");
+    --services-background: url("images/about_us_dark_mode.png"), url("images/about_us_dark_mode.jpg");
+    --features-background:  url("images/features-dark.png"), url("images/features-dark.jpg"), url("images/features-dark.webp");
+    --vision-background:    url("images/vision-light.png"), url("images/vision-dark.jpg"), url("images/vision-dark.webp");
+    --roadmap-background:   url("images/roadmap-light.png"), url("images/roadmap-light.jpg"), url("images/roadmap-dark.webp");
+    --contact-background:   url("images/contact-dark.png"), url("images/contact-dark.jpg"), url("images/contact-dark.webp");
 }
 
-/* التمرير السلس للصفحة */
+
+/* ================================================================
+   02. GLOBAL RESET AND PAGE DEFAULTS
+   ================================================================ */
+
 html {
     scroll-behavior: smooth;
+    /* Stops the sticky header from covering a section when a menu link is clicked */
+        scroll-padding-top: calc(var(--header-height) + 30px);
 }
 
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+* {
     transition: background-color 0.3s, color 0.3s;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    /* "hidden" is the fallback, "clip" is used by modern browsers.
+       clip hides sideways overflow WITHOUT breaking the sticky header. */
+    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 body {
@@ -39,7 +130,12 @@ body {
     line-height: 1.6;
 }
 
-/* زيادة التباعد بين الأقسام لمنع ظهور كلمة About Us عند الواجهة */
+
+/* ================================================================
+   03. SHARED SECTION LAYOUT AND HEADINGS
+   ================================================================ */
+
+/* Normal (non-animated) sections: centered column, max 1100px */
 section {
     padding: 80px 20px;
     max-width: 1100px;
@@ -52,25 +148,28 @@ h2 {
     color: var(--accent-color);
 }
 
-/* شريط التنقل العلوي */
+
+/* ================================================================
+   04. HEADER, LOGO, NAVIGATION AND HEADER CONTROLS
+   The header is "sticky": it stays at the top while scrolling and
+   it takes its own space, so it can never cover the page content.
+   ================================================================ */
+
 header {
-    background-color: var(--bg-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 30px;
-    height: 65px;
-    border-bottom: 1px solid var(--border-color);
-/* خصائص التثبيت الدائم */
-    position: fixed !important;
-    top: 0;
-    left: 0;
+
     width: 100%;
-    z-index: 1000;
-}
-/* إضافة مسافة علوية لكي لا يختفي الجزء الأول تحت الشريط المثبت */
-body {
-    padding-top: 95px !important; /* زيادة المسافة لتناسب ارتفاع الشريط بالكامل */
+    height: var(--header-height);
+    padding: 0 30px;
+
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
 }
 
 header .logo a {
@@ -79,9 +178,11 @@ header .logo a {
     text-decoration: none;
 }
 
+/* CHANGE HERE: header logo size -> Section 01 (--header-logo-height) */
 header .logo img {
-    height: 220px;
+    height: var(--header-logo-height);
     width: auto;
+    max-width: var(--header-logo-max-width);
     object-fit: contain;
     cursor: pointer;
     transition: transform 0.2s ease, filter 0.3s ease;
@@ -90,6 +191,14 @@ header .logo img {
 header .logo img:hover {
     transform: scale(1.05);
 }
+
+/* OPTIONAL: two header logos, one per theme.
+   Use this only if your HTML has both images, for example:
+       <img class="logo-for-light" src="images/logo-light.png" alt="Annabium">
+       <img class="logo-for-dark"  src="images/logo-dark.png"  alt="Annabium">
+   If you only have ONE header image, these rules do nothing. */
+body:not(.dark-mode) header .logo .logo-for-dark  { display: none; }
+body.dark-mode       header .logo .logo-for-light { display: none; }
 
 nav ul {
     display: flex;
@@ -113,7 +222,11 @@ nav ul li a:hover {
     gap: 12px;
 }
 
-/* قائمة اللغات المخصصة */
+
+/* ================================================================
+   05. LANGUAGE SELECTOR
+   ================================================================ */
+
 .custom-lang-dropdown {
     position: relative;
     display: inline-block;
@@ -180,7 +293,11 @@ nav ul li a:hover {
     color: var(--accent-color);
 }
 
-/* زر الوضع الداكن */
+
+/* ================================================================
+   06. LIGHT / DARK MODE TOGGLE BUTTON
+   ================================================================ */
+
 .theme-btn {
     background-color: var(--bg-primary);
     color: var(--text-color);
@@ -204,100 +321,131 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
-/* ========================================================== */
-/* تصميم الواجهة الرئيسية الفاخرة الممتدة على العرض الكامل    */
-/* ========================================================== */
-/* ========================================================== */
-/* إعدادات الخلفية الموحدة للنمطين (Light & Dark)             */
-/* ========================================================== */
 
-
-/* ========================================================== */
-/* الخلفية الموحدة للواجهة الرئيسية في الوضعين                */
-/* ========================================================== */
+/* ================================================================
+   07. MAIN HERO SECTION (first screen)
+   Full-width background + fade at the bottom.
+   Background images: --hero-background (Section 01).
+   ================================================================ */
 
 #hero {
-    position: relative !important;
-    width: 100vw !important;
-    max-width: 100% !important;
-    min-height: calc(100vh - 30px) !important;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
 
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    /* Full width of the screen */
+    width: 100%;
+    max-width: none;
+    min-height: calc(100vh - var(--header-height));
 
-    padding: 20px !important;
-    margin-top: 35px !important;
-    margin-bottom: 20px !important;
+    /* Center the card */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    left: 0 !important;
-    right: 0 !important;
-    margin-left: calc(-50vw + 50%) !important;
-    margin-right: calc(-50vw + 50%) !important;
+    padding: 20px;
+    /* BLEND CHANGE: was "margin: 0 0 20px 0". The 20px gap showed a flat
+       colored band between the hero and the About section. It is removed
+       so the two backgrounds touch and can blend. */
+    margin: 0;
 
-    /* خلفية الوضع المضيء */
-    background-image: url('images/back-ground-light01.jpg') !important;
-
-    /* نفس إعدادات الخلفية في الوضع الداكن */
-    background-size: cover !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-
-    transform: none !important;
+    /* Background image (light/dark switches automatically) */
+    background-image: var(--hero-background);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-/* خلفية الوضع الداكن */
-body.dark-mode #hero {
-    background-image: url('images/back-ground-dark01.jpg') !important;
+/* Keep the hero content above the fade overlay */
+#hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Fade at the bottom of the hero (blends into the next section).
+   BLEND CHANGE: the gradient now has 8 "eased" steps (slow start, smooth
+   middle, slow end) instead of 4 linear ones, so there is no visible
+   line where the fade begins. It ends on the page color (--bg-primary),
+   which is exactly where the About fade (Section 16.3) starts, so the
+   two backgrounds meet with no seam. Height: --hero-fade-height. */
+#hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: var(--hero-fade-height);
+    z-index: 1;
+    pointer-events: none;
+
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        color-mix(in srgb, var(--bg-primary) 8%,  transparent) 15%,
+        color-mix(in srgb, var(--bg-primary) 20%, transparent) 30%,
+        color-mix(in srgb, var(--bg-primary) 38%, transparent) 45%,
+        color-mix(in srgb, var(--bg-primary) 58%, transparent) 60%,
+        color-mix(in srgb, var(--bg-primary) 78%, transparent) 75%,
+        color-mix(in srgb, var(--bg-primary) 92%, transparent) 88%,
+        var(--bg-primary) 100%
+    );
 }
 
 
+/* ================================================================
+   08. HERO CONTENT CARD
+   Card image: --hero-card-background (Section 01).
+   ================================================================ */
 
-/* خلفية الوضع الداكن */
-body.dark-mode #hero {
-    background-image: url('images/back-ground-dark01.jpg') !important;
-}
-/* ========================================================== */
-/* تحديث خلفية الإطار الرئيسي لتتغير حسب الوضع (Light / Dark)  */
-/* ========================================================== */
-
-/* البطاقة في الوضع المضيء */
+/* Light mode card */
 .hero-card-box {
-    position: relative !important;
-    width: 100% !important;
-    max-width: 1350px !important;
-    padding: 70px 40px !important;
-    text-align: center !important;
-    border-radius: 28px !important;
-    border: 1px solid rgba(56, 189, 248, 0.3) !important;
-    
-    background: linear-gradient(135deg, rgba(240, 244, 248, 0.85), rgba(226, 232, 240, 0.78)),
-                url('images/about_us_light_mode.jpg') center/cover no-repeat !important;
-    
-    backdrop-filter: blur(12px) !important;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25), 
+    position: relative;
+    width: 100%;
+    max-width: 1350px;
+    padding: 50px 40px;
+    text-align: center;
+    border-radius: 28px;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+
+    /* gradient tint on top of the card image */
+    background-image:
+        linear-gradient(135deg, rgba(240, 244, 248, 0.96), rgba(226, 232, 240, 0.94)),        
+        var(--hero-card-background);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    backdrop-filter: blur(12px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25),
                 0 0 35px rgba(13, 110, 253, 0.15),
-                inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
-    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease !important;
+                inset 0 1px 2px rgba(255, 255, 255, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* البطاقة في الوضع الداكن */
+/* Dark mode card */
 body.dark-mode .hero-card-box {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(30, 41, 59, 0.92)),
-                url('images/about_us_dark_mode.jpg') center/cover no-repeat !important;
-    border: 1px solid rgba(56, 189, 248, 0.15) !important;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 
+    background-image:
+                linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.97)),
+        var(--hero-card-background);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55),
                 0 0 35px rgba(13, 110, 253, 0.25),
-                inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+                inset 0 1px 2px rgba(255, 255, 255, 0.2);
 }
 
 .hero-card-box:hover {
-    transform: translateY(-4px) !important;
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), 
-                0 0 45px rgba(56, 189, 248, 0.35) !important;
+    transform: translateY(-4px);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45),
+                0 0 45px rgba(56, 189, 248, 0.35);
 }
-/* تنسيق الشعار المخصص للوضعين المضيء والمظلم */
+
+
+/* ================================================================
+   09. HERO LOGO, SUBTITLE AND BUTTON
+   ================================================================ */
+
 .hero-logo {
     max-height: 110px;
     width: auto;
@@ -305,12 +453,47 @@ body.dark-mode .hero-card-box {
     margin-bottom: 25px;
 }
 
+/* Both hero logos (light + dark) share the SAME box, so they end up
+   the same size even if the two image files have different shapes.
+   object-fit: contain fits each logo inside the box without stretching.
+   CHANGE HERE: sizes come from Section 01
+   (--hero-logo-height, --hero-logo-width, --hero-logo-scale).
+   If one logo still looks smaller (transparent padding in the PNG),
+   give it its own scale in the "fine-tune" rules just below. */
+.hero-logo-container .logo-light-img,
+.hero-logo-container .logo-dark-img {
+    height: var(--hero-logo-height);
+    width: var(--hero-logo-width);
+    max-width: 100%;
+    object-fit: contain;
+    transform: scale(var(--hero-logo-scale));
+    transform-origin: center center;
+    margin: 30px auto 45px auto;
+}
+
+/* Show only the logo that matches the current theme */
+body:not(.dark-mode) .hero-logo-container .logo-light-img { display: block; }
+body:not(.dark-mode) .hero-logo-container .logo-dark-img  { display: none; }
+body.dark-mode .hero-logo-container .logo-light-img       { display: none; }
+body.dark-mode .hero-logo-container .logo-dark-img        { display: block; }
+
+/* Fine-tune each theme separately (uncomment and adjust if needed):
+body:not(.dark-mode) .hero-logo-container .logo-light-img { transform: scale(1.2); }
+body.dark-mode .hero-logo-container .logo-dark-img        { transform: scale(1.5); }
+*/
+
 .hero-subtitle {
-    font-size: 1.25rem;
+        font-size: 1.5rem;
     color: #e2e8f0;
-    max-width: 750px;
+    max-width: 850px;
     margin: 0 auto 35px auto;
     line-height: 1.7;
+}
+
+/* Light mode: darker subtitle for better contrast */
+body:not(.dark-mode) .hero-card-box .hero-subtitle {
+    color: #000000;
+    font-weight: 700;
 }
 
 .btn {
@@ -331,7 +514,12 @@ body.dark-mode .hero-card-box {
     box-shadow: 0 12px 28px rgba(56, 189, 248, 0.5);
     background: linear-gradient(135deg, #0284c7, #0d6efd);
 }
-/* الخدمات والمعرض */
+
+
+/* ================================================================
+   10. SERVICES, GALLERY, ABOUT TEXT AND CONTACT DETAILS
+   ================================================================ */
+
 .services-container {
     display: flex;
     gap: 20px;
@@ -341,13 +529,17 @@ body.dark-mode .hero-card-box {
 }
 
 .service-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
+    background-color: color-mix(in srgb, var(--card-bg) 70%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.25);
     padding: 25px;
-    border-radius: 12px;
+    border-radius: 14px;
     width: 300px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     text-align: center;
+
+    /* Hidden until script.js adds the "active" class (scroll reveal) */
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -366,6 +558,14 @@ body.dark-mode .hero-card-box {
 .service-card h3 {
     margin-bottom: 10px;
     color: var(--accent-color);
+}
+
+/* Lucide icons inside the service cards */
+.service-card .card-icon {
+    display: flex;
+    justify-content: center;
+    color: var(--accent-color);
+    margin-bottom: 12px;
 }
 
 .gallery-container {
@@ -397,7 +597,11 @@ body.dark-mode .hero-card-box {
     color: var(--text-color);
 }
 
-/* بطاقات المميزات (Features) */
+
+/* ================================================================
+   11. EXPANDABLE FEATURE CARDS
+   ================================================================ */
+
 .features-container {
     display: flex;
     flex-direction: column;
@@ -436,12 +640,25 @@ body.dark-mode .hero-card-box {
 }
 
 .toggle-btn {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: none;
-    border: none;
+    border: 1.5px solid var(--accent-color);
+    border-radius: 50%;
     color: var(--accent-color);
-    font-size: 1rem;
+    font-size: 1.3rem;
+    line-height: 1;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.feature-header:hover .toggle-btn {
+    background-color: var(--accent-color);
+    color: #ffffff;
 }
 
 .feature-content {
@@ -465,16 +682,14 @@ body.dark-mode .hero-card-box {
 }
 
 .feature-card.active .toggle-btn {
-    transform: rotate(180deg);
+    transform: rotate(45deg);   /* + turns into × */
 }
 
 
-/* جعل حاوية المحتوى الرئيسي تملأ الفراغ لدفع الـ Footer للأسفل دون فراغات فارغة */
-main, .content-wrapper {
-    flex: 1;
-}
+/* ================================================================
+   12. VISION SECTION AND TIMELINE
+   ================================================================ */
 
-/* قسم الرؤية والمخطط الزمني (Vision) */
 .vision-lead {
     font-size: 1.3rem;
     font-weight: 700;
@@ -497,14 +712,17 @@ main, .content-wrapper {
     margin-top: 20px;
 }
 
+/* تنسيق بطاقات الرؤية أو المراحل لتصبح زجاجية شفافة */
 .timeline-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 14px;
-    padding: 30px 20px 25px 20px;
+    background-color: color-mix(in srgb, var(--card-bg) 70%, transparent) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(56, 189, 248, 0.25) !important;
+    border-radius: 14px !important;
+    padding: 30px 20px 25px 20px !important;
     position: relative;
     text-align: right;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -516,8 +734,9 @@ html[dir="ltr"] .timeline-card {
 
 .timeline-card:hover {
     transform: translateY(-8px);
-    border-color: var(--accent-color);
-    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.15);
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 15px 35px rgba(13, 110, 253, 0.3) !important;
+    background-color: color-mix(in srgb, var(--card-bg) 82%, transparent) !important;
 }
 
 .timeline-badge {
@@ -530,7 +749,7 @@ html[dir="ltr"] .timeline-card {
     font-weight: bold;
     padding: 4px 14px;
     border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 html[dir="ltr"] .timeline-badge {
@@ -560,23 +779,30 @@ html[dir="ltr"] .timeline-badge {
     opacity: 0.9;
 }
 
-/* صندوق الجدوى التقنية */
+
+/* ================================================================
+   13. INFORMATION BOX (.feasibility-box)
+   Also used by the About card (see Section 16).
+   ================================================================ */
+
 .feasibility-box {
-    background-color: var(--card-bg);
-    border-left: 4px solid var(--accent-color);
-    border-right: 1px solid var(--border-color);
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px 25px;
-    margin-bottom: 35px;
-    text-align: justify;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    background-color: color-mix(in srgb, var(--card-bg) 68%, transparent) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-left: 4px solid var(--accent-color) !important;
+    border-right: 1px solid var(--border-color) !important;
+    border-top: 1px solid var(--border-color) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    padding: 20px 25px !important;
+    margin-bottom: 35px !important;
+    text-align: justify !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
 }
 
 html[dir="rtl"] .feasibility-box {
-    border-left: 1px solid var(--border-color);
-    border-right: 4px solid var(--accent-color);
+    border-left: 1px solid var(--border-color) !important;
+    border-right: 4px solid var(--accent-color) !important;
 }
 
 .feasibility-box p {
@@ -586,7 +812,11 @@ html[dir="rtl"] .feasibility-box {
     color: var(--text-color);
 }
 
-/* الجدول التفاعلي */
+
+/* ================================================================
+   14. ROADMAP TABLE
+   ================================================================ */
+
 .table-responsive {
     width: 100%;
     overflow-x: auto;
@@ -654,7 +884,11 @@ html[dir="ltr"] .stage-num {
     margin-right: 8px;
 }
 
-/* العنوان التقني (Tech Header) */
+
+/* ================================================================
+   15. ANIMATED SECTION HEADING (.tech-title)
+   ================================================================ */
+
 .tech-header-wrapper {
     display: flex;
     justify-content: center;
@@ -702,251 +936,516 @@ html[dir="ltr"] .stage-num {
     box-shadow: 0 15px 35px rgba(13, 110, 253, 0.25), 0 0 15px var(--accent-color);
 }
 
-/* ========================================================== */
-/* الاستجابة الشاملة للهواتف واستغلال كامل عرض الشاشة        */
-/* ========================================================== */
-*, *::before, *::after {
-    box-sizing: border-box !important;
+
+/* ================================================================
+   16. ANIMATED BACKGROUND SECTIONS (About, Services, Features,
+       Vision, Roadmap, Contact)
+
+   HOW IT WORKS
+   ----------------------------------------------------------------
+   Put BOTH classes on the <section> itself, and put ALL of the
+   section's content inside it:
+
+       <section id="about" class="animated-section sec-about">
+           <h2 class="tech-title">...</h2>
+           <div class="feasibility-box about-content">...</div>
+       </section>
+
+   The background image is drawn behind the whole section, so the
+   title AND the text sit on top of it.
+
+   Only the About section is active at the moment. To turn on another
+   one, add its classes in the HTML, for example:
+       services  ->  class="animated-section sec-services"
+       features  ->  class="animated-section sec-features"
+       vision    ->  class="animated-section sec-vision"
+       roadmap   ->  class="animated-section sec-roadmap"
+       contact   ->  class="animated-section sec-contact"
+   and make sure the image files exist in the images/ folder.
+   (Image names are set in Section 01.)
+   ================================================================ */
+
+/* ---------- 16.1 Shared layout ---------- */
+.animated-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    /* Full width of the screen (the section is a direct child of <body>) */
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    box-sizing: border-box;
+
+    /* Section height: at least one screen, grows if the content is taller */
+    min-height: calc(100vh - var(--header-height));
+
+    /* Center the content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* Spacing. The bottom value keeps the text away from the bottom fade.
+       CHANGE HERE: padding: top  sides  bottom */
+    padding: 80px 20px 140px 20px;
+
+    background-color: var(--bg-primary);
 }
 
-html, body {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: hidden !important;
-    margin: 0 !important;
-    padding: 0 !important;
+/* ---------- 16.2 Moving background image layer with smooth bottom fade ---------- */
+.animated-section::before {
+    content: "";
+    position: absolute;
+
+    /* Slightly bigger than the section so edges never show while moving */
+    inset: var(--anim-bleed);
+
+    z-index: 0;
+    pointer-events: none;
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    transform: scale(var(--anim-scale));
+    transform-origin: center center;
+    will-change: transform, background-position;
+
+    /* قناع ضبابي متدرج ناعم يمنع حدوث أي خط حاد في الأسفل أو الأعلى */
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0,
+        rgba(0, 0, 0, 0.45) calc(var(--anim-fade-top) * 0.50),
+        #000 var(--anim-fade-top),
+        #000 calc(100% - var(--anim-fade-bottom) - 120px),
+        rgba(0, 0, 0, 0.5) calc(100% - var(--anim-fade-bottom) * 0.5),
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0,
+        rgba(0, 0, 0, 0.45) calc(var(--anim-fade-top) * 0.50),
+        #000 var(--anim-fade-top),
+        #000 calc(100% - var(--anim-fade-bottom) - 120px),
+        rgba(0, 0, 0, 0.5) calc(100% - var(--anim-fade-bottom) * 0.5),
+        transparent 100%
+    );
 }
+
+/* ---------- 16.3 Top fade + smooth bottom fade layer ---------- */
+.animated-section::after {
+    /* The eased steps, written once and used by both gradients below */
+    --fade-stops:
+        var(--bg-primary) 0%,
+        color-mix(in srgb, var(--bg-primary) 92%, transparent) 12%,
+        color-mix(in srgb, var(--bg-primary) 78%, transparent) 25%,
+        color-mix(in srgb, var(--bg-primary) 58%, transparent) 40%,
+        color-mix(in srgb, var(--bg-primary) 38%, transparent) 55%,
+        color-mix(in srgb, var(--bg-primary) 20%, transparent) 70%,
+        color-mix(in srgb, var(--bg-primary) 8%,  transparent) 85%,
+        transparent 100%;
+
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+    pointer-events: none;
+
+    background-image:
+        /* Top fade gradient */
+        linear-gradient(to bottom, var(--fade-stops)),
+        /* Bottom smooth fade gradient */
+        linear-gradient(
+            to top,
+            var(--bg-primary) 0%,
+            color-mix(in srgb, var(--bg-primary) 85%, transparent) 15%,
+            color-mix(in srgb, var(--bg-primary) 50%, transparent) 35%,
+            transparent 60%
+        );
+}
+
+/* ---------- 16.4 Keep the content above the background ---------- */
+.animated-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ---------- 16.5 Background image + motion for each section ----------
+   The image comes from the variables in Section 01 (it switches
+   automatically between light and dark mode).
+   CHANGE HERE: the number of seconds is the animation speed.        */
+.sec-about::before {
+    background-image: var(--about-background);
+    background-size: 120% auto;        /* image zoom: 100% = fit width, bigger = zoom in, smaller = zoom out */
+    background-position: center 20%;   /* vertical position (the keyframes below control the movement) */
+    animation: motionAbout 30s ease-in-out infinite alternate;
+}
+
+.sec-services::before {
+    background-image: var(--services-background);
+    animation: motionServices 28s ease-in-out infinite alternate;
+}
+
+.sec-features::before {
+    background-image: var(--features-background);
+    animation: motionFeatures 32s ease-in-out infinite alternate;
+}
+
+.sec-vision::before {
+    background-image: var(--vision-background);
+    animation: motionVision 25s ease-in-out infinite alternate;
+}
+
+.sec-roadmap::before {
+    background-image: var(--roadmap-background);
+    animation: motionRoadmap 35s ease-in-out infinite alternate;
+}
+
+.sec-contact::before {
+    background-image: var(--contact-background);
+    animation: motionContact 30s ease-in-out infinite alternate;
+}
+
+/* ---------- 16.6 ABOUT section: the text card ----------
+   The card floats on the background image (glass effect).
+   Transparency and blur are set in Section 01.                      */
+.sec-about .about-content {
+    width: 100%;
+    max-width: 850px;
+    margin: 24px auto 0 auto;
+    padding: 28px 32px;
+
+    background: color-mix(in srgb, var(--bg-primary) var(--about-card-opacity), transparent);
+    -webkit-backdrop-filter: blur(var(--about-card-blur));
+    backdrop-filter: blur(var(--about-card-blur));
+    border-radius: 16px;
+}
+
+/* Layout of the content inside the About card
+   (CHANGE HERE: use display:grid with columns to add a second column) */
+.about-grid {
+    display: block;
+}
+
+.about-text-content {
+    width: 100%;
+}
+
+/* Fade-in when the section is scrolled into view.
+   script.js adds "reveal-ready", then "visible".
+   (Without JavaScript the card is simply shown.)                    */
+.sec-about.reveal-ready .about-content {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.sec-about.reveal-ready.visible .about-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------- 16.7 Background motion keyframes ---------- */
+
+/* About: slow horizontal movement */
+@keyframes motionAbout {
+    0%   { transform: scale(var(--anim-scale)) translate3d(20px, 0, 0);  background-position: 55% 20%; }
+    50%  { transform: scale(var(--anim-scale)) translate3d(0, 0, 0);     background-position: 50% 20%; }
+    100% { transform: scale(var(--anim-scale)) translate3d(-20px, 0, 0); background-position: 45% 20%; }
+}
+
+/* Services: diagonal movement */
+@keyframes motionServices {
+    0%   { transform: scale(var(--anim-scale)) translate3d(-15px, -10px, 0); }
+    50%  { transform: scale(var(--anim-scale)) translate3d(0, 0, 0); }
+    100% { transform: scale(var(--anim-scale)) translate3d(15px, 10px, 0); }
+}
+
+/* Features: vertical movement */
+@keyframes motionFeatures {
+    0%   { transform: scale(var(--anim-scale)) translate3d(0, 15px, 0); }
+    50%  { transform: scale(var(--anim-scale)) translate3d(-10px, 0, 0); }
+    100% { transform: scale(var(--anim-scale)) translate3d(10px, -15px, 0); }
+}
+
+/* Vision: diagonal movement */
+@keyframes motionVision {
+    0%   { transform: scale(var(--anim-scale)) translate3d(-20px, 10px, 0); }
+    50%  { transform: scale(var(--anim-scale)) translate3d(0, 0, 0); }
+    100% { transform: scale(var(--anim-scale)) translate3d(20px, -10px, 0); }
+}
+
+/* Roadmap: gentle diagonal movement */
+@keyframes motionRoadmap {
+    0%   { transform: scale(var(--anim-scale)) translate3d(10px, -10px, 0); }
+    50%  { transform: scale(var(--anim-scale)) translate3d(0, 5px, 0); }
+    100% { transform: scale(var(--anim-scale)) translate3d(-10px, 10px, 0); }
+}
+
+/* Contact: horizontal movement */
+@keyframes motionContact {
+    0%   { transform: scale(var(--anim-scale)) translate3d(-15px, 0, 0); }
+    50%  { transform: scale(var(--anim-scale)) translate3d(0, -10px, 0); }
+    100% { transform: scale(var(--anim-scale)) translate3d(15px, 0, 0); }
+}
+
+
+/* ================================================================
+   17. CONTACT SPACING AND FOOTER
+   ================================================================ */
+
+#contact {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 15px 20px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+
+/* ================================================================
+   18. MOBILE LAYOUT (screens up to 768px)
+   ================================================================ */
 
 @media (max-width: 768px) {
 
-    div, section, main, .container, .wrapper, .feasibility-box {
-        max-width: 100% !important;
-        width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+    /* Header becomes taller on phones (logo, menu, buttons stacked).
+       CHANGE HERE: if a menu link lands under the header, raise this. */
+    :root {
+        --header-height: 140px;
+        --header-logo-height: 40px;
+        --hero-logo-height: 120px;
+        --hero-logo-width: 260px;
+        --hero-logo-scale: 1.1;
+        --anim-fade-top: 150px;      /* BLEND: was 100px */
+        --anim-fade-bottom: 160px;
+        --hero-fade-height: 150px;   /* BLEND: was 110px (keep close to --anim-fade-top) */
     }
 
-    section {
-        padding: 30px 12px !important;
-        margin-bottom: 50px !important;
+    header {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 8px;
     }
 
-    #hero {
-        min-height: 80vh !important;
-        padding: 20px 10px !important;
-    }
-
-    .hero-card-box {
-        padding: 35px 18px !important;
-        border-radius: 18px !important;
-    }
-
-    .hero-title {
-        font-size: 1.8rem !important;
-    }
-
-    .hero-subtitle {
-        font-size: 0.98rem !important;
-    }
-
-    .btn {
-        padding: 12px 28px !important;
-        font-size: 0.95rem !important;
-    }
-
-    header, nav {
-        width: 100% !important;
-        padding: 10px 8px !important;
-        flex-direction: column !important;
-        align-items: center !important;
+    nav {
+        width: 100%;
     }
 
     nav ul {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 6px 10px !important;
-        padding: 0 !important;
-        margin: 10px 0 0 0 !important;
-        width: 100% !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 10px;
+        padding: 0;
+        margin: 10px 0 0 0;
+        width: 100%;
     }
 
     nav ul li a {
-        font-size: 0.8rem !important;
-        padding: 4px 6px !important;
+        font-size: 0.8rem;
+        padding: 4px 6px;
+    }
+
+    /* Normal sections */
+    section {
+        padding: 30px 12px;
+        margin-bottom: 50px;
+    }
+
+    /* Content blocks use the full width (only these, not every <div>) */
+    .feasibility-box,
+    .services-container,
+    .features-container,
+    .timeline-container,
+    .table-responsive {
+        max-width: 100%;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .service-card {
+        width: 100%;
+    }
+
+        #hero {
+        min-height: 80vh;
+        padding: 20px 10px;
+        background-attachment: scroll;
+    }
+
+    .hero-card-box {
+        padding: 35px 18px;
+        border-radius: 18px;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.98rem;
+    }
+
+    .btn {
+        padding: 12px 28px;
+        font-size: 0.95rem;
     }
 
     .tech-header-wrapper {
-        width: 100% !important;
-        margin-bottom: 20px !important;
+        width: 100%;
+        margin-bottom: 20px;
     }
 
     .tech-title {
-        font-size: 1.25rem !important;
-        padding: 12px 10px !important;
-        width: 100% !important;
-        display: block !important;
-        text-align: center !important;
+        font-size: 1.25rem;
+        padding: 12px 10px;
+        width: 100%;
+        display: block;
+        text-align: center;
     }
 
     .feasibility-box {
-        padding: 16px 12px !important;
-        border-radius: 12px !important;
+        padding: 16px 12px;
+        border-radius: 12px;
     }
 
-    .feasibility-box p, 
+    .feasibility-box p,
     .about-text {
-        font-size: 0.92rem !important;
-        line-height: 1.75 !important;
-        word-break: break-word !important;
+        font-size: 0.92rem;
+        line-height: 1.75;
+        word-break: break-word;
     }
 
     .timeline-container,
     .features-container,
     .services-container {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        gap: 15px !important;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Animated sections on phones */
+    .animated-section {
+        padding: 45px 16px 110px 16px;
+    }
+
+    .sec-about .about-content {
+        padding: 20px 18px;
     }
 }
-/* ========================================================== */
-/* التحكم النهائي في صور الواجهة مع خاصية التكبير (Zoom)      */
-/* ========================================================== */
 
-/* 1. في الوضع المضيء: إظهار الصورة البيضاء وتكبيرها */
-body:not(.dark-mode) .hero-logo-container .logo-light-img {
-    display: block !important;
-    height: 220px !important;
-    width: auto !important;
-    object-fit: contain !important;
-    transform: scale(1.6) !important; /* جرب تغيير هذا الرقم للتحكم في نسبة الزوم (مثلاً 1.5 أو 1.8 أو 2) */
-    transform-origin: center center !important; /* التكبير من المنتصف */
-    margin: 30px auto 45px auto !important; /* إضافة مسافة لتعويض التكبير */
-}
 
-body:not(.dark-mode) .hero-logo-container .logo-dark-img {
-    display: none !important;
-}
+/* ================================================================
+   19. ACCESSIBILITY — REDUCED MOTION
+   Visitors who disabled animations in their system get no movement.
+   ================================================================ */
 
-/* 2. في الوضع الداكن: إظهار الصورة الداكنة وتكبيرها */
-body.dark-mode .hero-logo-container .logo-light-img {
-    display: none !important;
-}
+@media (prefers-reduced-motion: reduce) {
 
-body.dark-mode .hero-logo-container .logo-dark-img {
-    display: block !important;
-    height: 220px !important;
-    width: auto !important;
-    object-fit: contain !important;
-    transform: scale(1.6) !important; /* نفس نسبة الزوم */
-    transform-origin: center center !important;
-    margin: 30px auto 45px auto !important;
-}
-/* ========================================================== */
-/* تخصيص لون نص الواجهة ليصبح أسود داكن في الوضع المضيء     */
-/* ========================================================== */
-body:not(.dark-mode) .hero-card-box .hero-subtitle {
-    color: #000000 !important; /* لون أسود صريح وبارز */
-    font-weight: 700 !important; /* زيادة سمك الخط لزيادة وضوحه */
-}
-/* ========================================================== */
-/* الحل النهائي لإزالة الفراغ السفلي وتثبيت أبعاد العناصر      */
-/* ========================================================== */
+    .animated-section::before {
+        animation: none;
+        transform: scale(var(--anim-scale));
+    }
 
-/* 1. إزالة أي هوامش سفلية زائدة من الصفحة والـ body */
-html, body {
-    margin: 0 !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    overflow-x: hidden !important;
+    .sec-about.reveal-ready .about-content {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
 }
 
-/* 2. ضبط قسم تواصل معنا ليكون متناسقاً ولا يترك مسافات فارغة ضخمة تحته */
-#contact {
-    margin-bottom: 20px !important;
-    padding-bottom: 20px !important;
-}
+/* ================================================================
+   17. CONTACT GMAIL BUTTON & SVG LOGO STYLES
+   ================================================================ */
 
-/* 3. تثبيت شريط حقوق النشر في الأسفل مباشرة بدون فراغات */
-footer {
-    background-color: var(--footer-bg) !important;
-    color: var(--footer-text) !important;
-    text-align: center !important;
-    padding: 15px 20px !important;
-    margin-top: 20px !important;
-    margin-bottom: 0 !important;
-    width: 100% !important;
-}
-/* ========================================================== */
-/* 1. ملء الشاشة بالكامل بالعرض والارتفاع دون أي فراغات جانبية */
-/* ========================================================== */
-html, body {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow-x: hidden !important;
-}
-#hero {
-    width: 100vw !important;
-    max-width: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    margin-left: calc(-50vw + 50%) !important;
-    margin-right: calc(-50vw + 50%) !important;
-}
-
-/* الوضع الداكن لخلفية الشاشة الكاملة */
-body.dark-mode #hero {
-    background: url('images/back-ground-dark01.jpg') center/cover no-repeat fixed !important;
-}
-
-/* ========================================================== */
-/* 2. إصلاح شريط التنقل وزر الوضع الليلي (Dark Mode Button)     */
-/* ========================================================== */
-header {
-    width: 100% !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 0 30px !important;
-    height: 65px !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    z-index: 9999 !important;
-    background-color: var(--bg-secondary) !important;
-    border-bottom: 1px solid var(--border-color) !important;
-}
-
-.header-controls {
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-/* إظهار وتنسيق زر الدارك مود بوضوح تام */
-.theme-btn {
-    display: flex !important;
+/* تنسيق زر Gmail ليصبح متناسقاً وبحجم مضبوط في المنتصف */
+.contact-gmail-btn {
+    display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    background-color: var(--bg-primary) !important;
-    color: var(--text-color) !important;
-    border: 1px solid var(--border-color) !important;
-    width: 38px !important;
-    height: 38px !important;
-    border-radius: 50% !important;
-    cursor: pointer !important;
-    font-size: 1.1rem !important;
-    z-index: 1000 !important;
+    gap: 12px !important;
+    padding: 12px 24px !important;
+    background: #ffffff !important;
+    color: #202124 !important;
+    border: 1px solid #dadce0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    text-decoration: none !important;
+    width: auto !important;
+    max-width: 100% !important;
     transition: all 0.3s ease !important;
 }
 
-.theme-btn:hover {
-    background-color: var(--accent-color) !important;
-    color: #ffffff !important;
-    border-color: var(--accent-color) !important;
+.contact-gmail-btn:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25) !important;
+    background: #f8f9fa !important;
+}
+
+.gmail-logo-svg {
+    display: inline-block !important;
+    flex-shrink: 0 !important;
+    width: 22px !important;
+    height: 22px !important;
+    vertical-align: middle !important;
+}
+
+/* ================================================================
+                       (Custom Scrollbar) 
+   ================================================================ */
+
+/* 1. إظهار شريط رفيع جداً وشفاف تماماً كافتراضي (لا يظهر له أثر) */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent; /* مخفي تماماً بالوضع الطبيعي */
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+/* 2. إظهار المقبض بلون متناسق فقط عندما يحوم المؤشر فوق شريط التمرير نفسه */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color) !important;
+}
+
+/* لجعل مسار التمرير يتفاعل عند مرور الفأرة على أقصى اليمين */
+::-webkit-scrollbar:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+body.dark-mode ::-webkit-scrollbar:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* في الوضع العادي، عندما يقترب المؤشر من الشريط على حافة الشاشة يظهر بلون خفيف */
+html:hover::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.25);
+}
+
+body.dark-mode html:hover::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.25);
 }
