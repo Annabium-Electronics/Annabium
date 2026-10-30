@@ -62,8 +62,8 @@
     --about-background:     url("images/aboutus.jpg");
     --services-background: url("images/about_us_light_mode.png"), url("images/about_us_light_mode.jpg");
     --features-background:  url("images/features-light.png"), url("images/features-light.jpg"), url("images/features-light.webp");
-    --vision-background:    url("images/vision-light.png"), url("images/vision-light.jpg"), url("images/vision-light.webp");
-    --roadmap-background:   url("images/roadmap-light.png"), url("images/roadmap-light.jpg"), url("images/roadmap-light.webp");
+    --vision-background:    url("images/vision-dark.png");
+--roadmap-background:   url("images/roadmap-dark.png");
     --contact-background:   url("images/contact-light.png"), url("images/contact-light.jpg"), url("images/contact-light.webp");
 }
 
@@ -1448,4 +1448,20 @@ html:hover::-webkit-scrollbar-thumb {
 
 body.dark-mode html:hover::-webkit-scrollbar-thumb {
     background: rgba(56, 189, 248, 0.25);
+}
+
+@media (max-width: 768px) {
+  .animated-section::before {
+    animation: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+    will-change: auto;
+  }
+  .service-card, .timeline-card, .feasibility-box,
+  .tech-title, .hero-card-box, .sec-about .about-content {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: var(--card-bg) !important;
+  }
+  * { transition: none; }
 }
